@@ -1,32 +1,25 @@
 package application;
 
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.ArrayList;
+import java.util.List;
+
+import entities.Product;
 
 public class Program {
-
+	
 	public static void main(String[] args) {
 
-		Map<String, String> cookies = new TreeMap<>();
+		List<Product> list = new ArrayList<>();
 		
-		String e = "Gabriel";
+		list.add(new Product("Tv", 900.0));
+		list.add(new Product("Notebook", 1200.0));
+		list.add(new Product("Tablet", 400.0));
 		
-		cookies.put("username", "maria");
-		cookies.put("email", "maria@gmail.com");
-		cookies.put("phone " + e, "99771122");
-		cookies.remove("email");
-		cookies.put("phone " + e, "99771133");
+		//implementacao de uma funcao anonima(Lambda) //arrow function		
+		list.sort((p1, p2) -> p1.getName().toUpperCase().compareTo(p2.getName().toUpperCase()));
 		
-		System.out.println("Contains 'phone' key: " + cookies.containsKey("phone"));
-		System.out.println("Phone number : " + cookies.get("phone"));
-		System.out.println("Email: " + cookies.get("email"));
-		System.out.println("Size: " + cookies.size());
-		System.out.println("ALL COOKIES:");
-		
-		for (String key : cookies.keySet()) {
-			System.out.println(key + ": " + cookies.get(key));
+		for (Product p : list) {
+			System.out.println(p);
 		}
-
 	}
-
 }
